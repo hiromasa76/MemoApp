@@ -14,7 +14,7 @@ export default function Icon(props) {
         return null;
     }
     return (
-        < CustomIcon name={name} size={size} color={color} />
+        < CustomIcon name={name} size={size} color={color} style={{ lineheight: size - 1 }} />
     )
 }
 
