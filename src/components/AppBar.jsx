@@ -14,7 +14,7 @@ export default function AppBar() {
 const styles = StyleSheet.create({
     appbar: {
         width: '100%',
-        height: '104px',
+        height: 104,
         backgroundColor: '#467fd3',
         justifyContent: 'flex-end',
     },
