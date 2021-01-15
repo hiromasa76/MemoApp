@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View, Text, StyleSheet, TextInput, TouchableOpacity, Alert,
 } from 'react-native';
@@ -11,6 +11,19 @@ export default function LogInScreen(props) {
     const [email, setEmail] = useState('');
     const [password, setPassWord] = useState('');
 
+    useEffect(() => {
+        const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'MemoList' }],
+                });
+            }
+        })
+        //戻り値としてunsubscribeに関数(監視状態がキャンセルされる）が格納され
+        //コンポーネントがアンマウントされる直前にcleanup(関数）が実行される
+        return unsubscribe;
+    }, []);
     function handlePress() {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
