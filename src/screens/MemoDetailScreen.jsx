@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import {
+    View, ScrollView, Text, StyleSheet, KeyboardAvoidingView,
+} from 'react-native';
 
 import CircleButton from '../components/CircleButton'
 
 export default function MemoDetailScreen(props) {
     const { navigation } = props;
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="height">
             <View style={styles.memoHeader}>
                 <Text style={styles.memoTitle}>買い物リスト</Text>
                 <Text style={styles.memoDate}>2020年12月24日 10:10</Text>
@@ -23,7 +25,7 @@ export default function MemoDetailScreen(props) {
                 name="edit-2"
                 onPress={() => { navigation.navigate("MemoEdit") }}
             />
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
